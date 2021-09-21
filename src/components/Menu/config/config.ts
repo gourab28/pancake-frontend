@@ -64,6 +64,10 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
         label: t('Collections'),
         href: `${nftsBaseUrl}/collections`,
       },
+      {
+        label: t('Pancake Squad'),
+        href: '/pancake-squad',
+      },
     ],
   },
   {
