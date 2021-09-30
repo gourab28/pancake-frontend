@@ -8,6 +8,8 @@ import { fetchCollections, fetchNftsByBunnyId, fetchNftsFromCollections, updateN
 import { State } from '../types'
 import { NftToken, UserNftsState } from './types'
 
+const MAX_GEN0_ID = 4
+
 export const useFetchCollections = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
@@ -96,4 +98,9 @@ export const useGetNFTInitializationState = () => {
 
 export const useUserNfts = (): UserNftsState => {
   return useSelector((state: State) => state.nftMarket.data.user)
+}
+
+export const useHasGen0Nfts = (): boolean => {
+  const userNfts = useSelector((state: State) => state.nftMarket.data.user)
+  return userNfts.nfts.some((nft) => Number(nft.tokenId) <= MAX_GEN0_ID)
 }
